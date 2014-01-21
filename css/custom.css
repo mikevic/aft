@@ -1,0 +1,77 @@
+body {
+  padding-top: 100px;
+}
+
+/* Custom container */
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+
+#aiesec_topbanner{
+  box-shadow:0 0 20px #000;
+  width:100%;
+  background:#204887;
+  font-family:Arial;
+}
+
+#aiesec_topbanner > .pull-right{
+  float:right;
+}
+
+#aiesec_topbanner > .clearfix{
+  clear:both;
+}
+
+#aiesec_topbanner img{
+  float:left;
+  margin:8px 0;
+}
+
+#aiesec_topbanner #nav{
+  font-size:11px;
+  
+  text-align:right;
+  margin:0;
+  margin-right:4px;
+  margin-top:5px;
+}
+
+#aiesec_topbanner #nav > li{
+  padding:0;
+  margin:0;
+  display:inline-block;
+  vertical-align: bottom;
+  height:25px;
+}
+
+#aiesec_topbanner #nav li a{
+  line-height:20px;
+  height:20px;
+  padding:4px 8px 4px 8px;
+  border-radius:3px;
+  color:#d0daea;
+  text-decoration:none;
+  -webkit-transition: all linear 0.2s;
+     -moz-transition: all linear 0.2s;
+      -ms-transition: all linear 0.2s;
+       -o-transition: all linear 0.2s;
+          transition: all linear 0.2s;
+}
+
+#aiesec_topbanner #nav li.sel > a{
+  color:#6c86b0;
+  color:#fff;
+  background:#163c78;
+  background:#719d3e;
+  box-shadow:0 0 2px rgba(255,255,255,0.5) inset;
+}
+
+#aiesec_topbanner #nav li a:hover{
+  color:#fff;
+  text-decoration:none;
+}
+
+#aiesec_topbanner #nav li.sel > a:hover{
+  cursor:default;
+}
