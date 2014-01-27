@@ -1,4 +1,13 @@
+<?php
+#Connect to Database
+require 'inc/dbconnect.inc.php';
 
+#Get Page Information
+$currentFile = $_SERVER["PHP_SELF"];
+$parts = Explode('/', $currentFile);
+$current_page =  $parts[count($parts) - 1];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +18,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>DAAL</title>
+    <title>AFT</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -54,12 +63,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">DAAL 2013</a>
+          <a class="navbar-brand" href="#">AFT</a>
         </div>
           <ul class="nav navbar-nav">
             <li><a href="index.php">Home</a></li>
             <li><a href="how-to-use.php">How to Use</a></li>
-            <li><a href="daal.php">DAAL</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

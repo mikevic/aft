@@ -12,20 +12,41 @@
 
       function drawRegionsMap() {
         var data = google.visualization.arrayToDataTable([
-          ['Country', 'Popularity'],
-          ['Germany', 200],
-          ['United States', 300],
-          ['Brazil', 400],
-          ['Canada', 500],
-          ['France', 600],
-          ['RU', 700]
+          ['Country', 'EPs', 'TNs'],
+
+
+<?php
+  $result1 = mysql_query("SELECT * from country");
+  $list_of_countries = mysql_fetch_assoc($result1);
+  while($row = mysql_fetch_assoc($result1)) {
+    $epcount = 0;
+    $tncount = 0;
+    $country = $row['nicename'];
+    $result2 = mysql_query("SELECT COUNT(entry_id) AS entries FROM ep WHERE `MC`='$country'");
+    $result3 = mysql_query("SELECT COUNT(entry_id) AS entries FROM tn WHERE `MC`='$country'");
+    $ep_data = mysql_fetch_assoc($result2);
+    $epcount = $ep_data['entries'];
+    $tn_data = mysql_fetch_assoc($result3);
+    $tncount = $tn_data['entries'];
+    if($epcount != 0 || $tncount != 0) {
+      echo "['$country', $epcount, $tncount],";
+    }
+  }
+?>
+
         ]);
 
         var options = {};
 
         var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
         chart.draw(data, options);
-    };
+        google.visualization.events.addListener(chart, 'select', function() {
+        var selection = chart.getSelection()[0];
+        var label = data.getValue(selection.row, 0);
+        alert(label+' : AFT Popup');
+        });
+      };
+
     </script>
 
     <div id="chart_div" style="width: 100%;"></div>
