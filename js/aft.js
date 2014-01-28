@@ -22,8 +22,9 @@ $(".topten").click(function() {
 });
 
 function getlclist(label){
-	$("#setcountry").val(label);
-	var url = 'inc/get_lc_data.php';
+	$("#aft-header-form").append( "<input type=\"hidden\" value=\""+label+" \" id=\"setcountry\" name=\"country\" />" );
+	var url = 'inc/generate_lc_data.php';
+	var country = $("#setcountry").val();
 	$.ajax({
            type: "POST",
            url: url,

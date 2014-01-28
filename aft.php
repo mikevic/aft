@@ -1,38 +1,6 @@
 <?php
   require 'header.php';
-
-  //Handling Table Type
-  if(isset($_POST['table_type']) && !empty($_POST['table_type'])){
-  	$type = $_POST['table_type'];
-  } else {
-  	$type = 'ep';
-  }
-  if($type == 'ep'){
-  	$type_diplay = "EPs";
-  } else {
-  	$type_diplay = "TNs";
-  }
-
-  //Handling Exchange Type
-  if(isset($_POST['xtype']) && !empty($_POST['xtype'])){
-    $x_type = $_POST['xtype'];
-  } else {
-    $x_type = 'unset';
-  }
-
-  //Handling Primary Background
-  if(isset($_POST['primary-background']) && !empty($_POST['primary-background'])){
-  	$primary_bg = $_POST['primary-background'];
-  } else {
-  	$primary_bg = 'unset';
-  }
-
-  //Handling Secondary Background
-  if(isset($_POST['secondary-background']) && !empty($_POST['secondary-background'])){
-    $secondary_bg = $_POST['secondary-background'];
-  } else {
-    $secondary_bg = 'unset';
-  }
+  require 'inc/handle_data.php';
 ?>
 
 	<form class="form-inline" role="form" id="aft-header-form" method="POST">
@@ -49,6 +17,9 @@
         <option value="Global Community Development" <?php if($x_type == 'Global Community Development'){echo 'selected';} ?> >Global Community Development</option>
       </select>
     </div>
+    <?php 
+    if($x_type == 'Global Internship'){
+    ?>
 	  <div class="form-group">
 	  	<select name="primary-background" class="form-control aft-form">
         <option value="unset">Select primary background</option>
@@ -81,7 +52,9 @@
           }
         ?>
       </select>
-      <input type="hidden" value="" id="setcountry" />
+      <?php
+      }
+      ?>
     </div>
     <?php
     }
@@ -152,6 +125,23 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal2 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header2">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body2">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

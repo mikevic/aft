@@ -1,38 +1,6 @@
 <?php
 require 'dbconnect.inc.php';
-
-//Handling Table Type
-if(isset($_POST['table_type']) && !empty($_POST['table_type'])){
-	$type = $_POST['table_type'];
-} else {
-	$type = 'ep';
-}
-if($type == 'ep'){
-	$type_diplay = "EPs";
-} else {
-	$type_diplay = "TNs";
-}
-
-//Handling Exchange Type
-if(isset($_POST['xtype']) && !empty($_POST['xtype'])){
-$x_type = $_POST['xtype'];
-} else {
-$x_type = 'unset';
-}
-
-//Handling Primary Background
-if(isset($_POST['primary-background']) && !empty($_POST['primary-background'])){
-	$primary_bg = $_POST['primary-background'];
-} else {
-	$primary_bg = 'unset';
-}
-
-//Handling Secondary Background
-if(isset($_POST['secondary-background']) && !empty($_POST['secondary-background'])){
-$secondary_bg = $_POST['secondary-background'];
-} else {
-$secondary_bg = 'unset';
-}
+require 'handle_data.php';
 
 $count_list = array();
 $result1 = mysql_query("SELECT * from country");
