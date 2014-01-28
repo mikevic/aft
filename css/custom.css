@@ -75,3 +75,9 @@ body {
 #aiesec_topbanner #nav li.sel > a:hover{
   cursor:default;
 }
+
+.topten {
+  position: fixed;
+  right:30px;
+  top:100px;
+}

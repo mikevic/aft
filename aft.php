@@ -13,6 +13,13 @@
   	$type_diplay = "TNs";
   }
 
+  //Handling Exchange Type
+  if(isset($_POST['xtype']) && !empty($_POST['xtype'])){
+    $x_type = $_POST['xtype'];
+  } else {
+    $x_type = 'unset';
+  }
+
   //Handling Primary Background
   if(isset($_POST['primary-background']) && !empty($_POST['primary-background'])){
   	$primary_bg = $_POST['primary-background'];
@@ -29,15 +36,22 @@
 ?>
 
 	<form class="form-inline" role="form" id="aft-header-form" method="POST">
-	  <div class="form-group">
+    <div class="form-group">
 	    <select class="form-control aft-form" name="table_type">
 	    	<option value="ep" <?php if($type == 'ep'){echo 'selected';}?> >EPs</option>
 	    	<option value="tn"  <?php if($type == 'tn'){echo 'selected';}?> >TNs</option>
 	    </select>
 	  </div>
+    <div class="form-group">
+      <select name="xtype" class="form-control aft-form">
+        <option value="unset">Select X Type</option>
+        <option value="Global Internship" <?php if($x_type == 'Global Internship'){echo 'selected';} ?> >Global Internship</option>
+        <option value="Global Community Development" <?php if($x_type == 'Global Community Development'){echo 'selected';} ?> >Global Community Development</option>
+      </select>
+    </div>
 	  <div class="form-group">
 	  	<select name="primary-background" class="form-control aft-form">
-        <option value="">Select primary background</option>
+        <option value="unset">Select primary background</option>
 			<?php
 				$result3 = mysql_query("SELECT DISTINCT `primary background` from `backgrounds`");
 				while($row = mysql_fetch_assoc($result3)){
@@ -55,7 +69,7 @@
     ?>
     <div class="form-group">
       <select name="secondary-background" class="form-control aft-form">
-        <option value="">Select primary background</option>
+        <option value="unset">Select primary background</option>
         <?php
           $result4 = mysql_query("SELECT `secondary background` from `backgrounds` WHERE `primary background`='$primary_bg'");
           while($row = mysql_fetch_assoc($result4)){
@@ -67,11 +81,14 @@
           }
         ?>
       </select>
+      <input type="hidden" value="" id="setcountry" />
     </div>
     <?php
     }
     ?>
+
 	</form>
+  <button class="topten btn">View Top 10</button>
 	<div class="container-full">
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script type='text/javascript'>
@@ -89,6 +106,9 @@
   while($row = mysql_fetch_assoc($result1)) {
     $country = $row['nicename'];
     $where_query = " WHERE `MC`='$country'";
+    if($x_type != 'unset'){
+      $where_query .= " AND `Exchange Type` LIKE '%$x_type%'";
+    }
     if($primary_bg != 'unset'){
       $where_query .= " AND `primary background` LIKE '%$primary_bg%'";
     }
@@ -114,15 +134,31 @@
         google.visualization.events.addListener(chart, 'select', function() {
         var selection = chart.getSelection()[0];
         var label = data.getValue(selection.row, 0);
-        alert(label+' : AFT Popup');
+        getlclist(label);
         });
       };
 
     </script>
 
     <div id="chart_div" style="width: 100%;"></div>
-</div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <?php
 	require 'footer.php';
 ?>
