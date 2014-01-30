@@ -81,3 +81,16 @@ body {
   right:30px;
   top:100px;
 }
+
+#loading {
+  position:fixed;
+  left: 45%;
+  top: 30%;
+
+}
+
+.header-form {
+  position: fixed;
+  left:30px;
+  top:100px;
+}
