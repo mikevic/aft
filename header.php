@@ -1,6 +1,7 @@
 <?php
 #Connect to Database
 require 'inc/dbconnect.inc.php';
+require 'inc/functions.inc.php';
 
 #Get Page Information
 $currentFile = $_SERVER["PHP_SELF"];
@@ -64,11 +65,12 @@ $current_page =  $parts[count($parts) - 1];
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AFT</a>
+          <a class="navbar-brand" href="index.php">AFT</a>
         </div>
           <ul class="nav navbar-nav">
             <li><a href="index.php">Home</a></li>
             <li><a href="how-to-use.php">How to Use</a></li>
+            <li><a href="aft.php">Available Form Tracker</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

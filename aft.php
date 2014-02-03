@@ -9,14 +9,16 @@
 
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script type='text/javascript'>
-     google.load('visualization', '1', {'packages': ['geochart']});
-     google.setOnLoadCallback(drawRegionsMap);
+     google.load('visualization', '1', {packages: ['geochart']});
 
-      function drawRegionsMap() {
-        var data = google.visualization.arrayToDataTable([
-          ['Country', '<?php echo $type_diplay ?>'],
-
-
+    function drawVisualization() {
+    
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Country');
+          data.addColumn('number', 'Value');
+          data.addColumn('string', 'Display');
+    
+          data.addRows([
 <?php
   $result1 = mysql_query("SELECT * from country");
   $list_of_countries = mysql_fetch_assoc($result1);
@@ -89,34 +91,48 @@
     $ep_data = mysql_fetch_assoc($result2);
     $count = $ep_data['entries'];
     if($count != 0) {
-        echo "['$country', $count],";
+        $country_display_name = format_country_name($country);
+        echo "['$country', $count, '$country_display_name'],";
     }
     
   }
 ?>
-
-        ]);
-
-        var options = {
+          ]);
+    
+          var geochart = new google.visualization.GeoChart(
+              document.getElementById('visualization'));
+    
+          var formatter = new google.visualization.PatternFormat('{1}');  
+          formatter.format(data, [0, 2]);
+    
+          var view = new google.visualization.DataView(data);
+          view.setColumns([0, 1]);  
+          
+           var options = {
 <?php
   if($region != 'world'){
     echo "region : '$region'";
   }
 ?>
         };
+    
+          geochart.draw(view, options);
 
-        var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-        google.visualization.events.addListener(chart, 'select', function() {
-        var selection = chart.getSelection()[0];
-        var label = data.getValue(selection.row, 0);
-        getlclist(label);
-        });
-      };
+
+          google.visualization.events.addListener(geochart, 'select', function() {
+          var selection = geochart.getSelection()[0];
+          var label = data.getValue(selection.row, 0);
+          getlclist(label);
+          });
+        }
+    
+
+    google.setOnLoadCallback(drawVisualization);
+
 
     </script>
 
-    <div id="chart_div" style="width: 100%;"></div>
+    <div id="visualization" style="width: 100%;"></div>
 
 
 <!-- Modal -->

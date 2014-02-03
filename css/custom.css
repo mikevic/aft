@@ -94,3 +94,33 @@ body {
   left:30px;
   top:100px;
 }
+
+.show {
+  position : fixed;
+  left : 35%;
+  top : 30%;
+}
+
+.show2 {
+  position : fixed;
+  left : 40%;
+  top : 39%;
+}
+
+.show3 {
+  position : fixed;
+  left : 45%;
+  top : 45%;
+}
+
+.show4 {
+  position: fixed;
+  right : 2%;
+  bottom : 2%;
+}
+
+.show5 {
+  position: fixed;
+  right : 2%;
+  top : 10%;
+}
