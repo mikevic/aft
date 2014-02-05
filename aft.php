@@ -166,9 +166,9 @@
       }
       if($background != 'unset'){
         if($search_scope != 'primary-secondary'){
-          $where_query .= " AND `EP Background in primary field of work` LIKE '%$background%'";
+          $where_query .= " AND `Background in primary field of work` LIKE '%$background%'";
         } else {
-          $where_query .= " AND (`EP Background in primary field of work` LIKE '%$background%' OR `EP Background in secondary field of work` LIKE '%$background%')";
+          $where_query .= " AND (`Background in primary field of work` LIKE '%$background%' OR `Background in secondary field of work` LIKE '%$background%')";
         }
       }
     }
