@@ -124,6 +124,7 @@
         <option value="019" <?php if($region == '019'){echo 'selected';} ?> >Americas</option>  
         <option value="142" <?php if($region == '142'){echo 'selected';} ?> >Asia</option>
         <option value="009" <?php if($region == '009'){echo 'selected';} ?> >Oceania</option>
+        <option value="029" <?php if($region == '009'){echo 'selected';} ?> >Caribbean</option>
       </select>
     </div>
     <div class="form-group">
