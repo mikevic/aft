@@ -2,6 +2,9 @@ body {
   padding-top: 100px;
 }
 
+#aft-header-form{
+  display: none;
+}
 /* Custom container */
 .container-full {
   margin: 0 auto;

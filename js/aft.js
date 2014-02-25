@@ -1,5 +1,5 @@
-$(".aft-form").change(function() {
-	$("#aft-header-form").submit();
+$("select").change(function() {
+	//$("#aft-header-form").submit();
 });
 
 $(".topten").click(function() {
@@ -51,6 +51,16 @@ function getlclist(label){
 
 $(document).ready(function() { 
   $("#loading").hide();
+  $('select').selectpicker();
+  var $tabletype = $('#tabletype').data('selectpicker').$newElement;
+  var $xtype = $('#xtype').data('selectpicker').$newElement;
+  $tabletype.on('hidden.bs.dropdown', function() {
+      $("#aft-header-form").submit();
+  });
+  $xtype.on('hidden.bs.dropdown', function() {
+      $("#aft-header-form").submit();
+  });
+
   $( "#enddate" ).datepicker({
       onSelect : function(){
         $("#aft-header-form").submit();
@@ -58,5 +68,6 @@ $(document).ready(function() {
          }
        });
     $( "#startdate" ).datepicker();
+    $("#aft-header-form").css("display", "inherit");
 });
     

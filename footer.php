@@ -7,20 +7,34 @@ if(isset($_POST['region']) && !empty($_POST['region'])){
 }
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
     <?php
-    	switch ($current_page) {
+      switch ($current_page) {
     		case 'aft.php':
     			echo '<script src="js/aft.js"></script>';
-
     			break;
     		
     		default:
     			# code...
     			break;
     	}
+      if($x_type == 'Global Internship'){
+        echo generate_multi_select_js('fow');
+        if($fow != 'unset'){
+          echo generate_multi_select_js('primarysecondary');
+          echo generate_multi_select_js('background');
+        }
+      } elseif ($x_type == 'Global Community Development'){
+        echo generate_multi_select_js('masterissue');
+        if($master_issue != 'unset'){
+          echo generate_multi_select_js('subissue');
+        }
+      }
+      echo generate_multi_select_js('duration');
+      echo generate_multi_select_js('region');
 
     ?>
     <script>

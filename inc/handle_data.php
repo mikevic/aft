@@ -1,4 +1,5 @@
 <?php
+
 //Handling Table Type
 if(isset($_POST['table_type']) && !empty($_POST['table_type'])){
 	$type = $_POST['table_type'];
@@ -25,7 +26,6 @@ if($x_type == 'Global Internship'){
 	//Handling FOW Selection
 	if(isset($_POST['field-of-work']) && !empty($_POST['field-of-work'])){
 		$fow = $_POST['field-of-work'];
-
 	} else {
 		$fow = 'unset';
 	}

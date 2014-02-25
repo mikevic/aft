@@ -26,6 +26,7 @@ $current_page =  $parts[count($parts) - 1];
 
     <!-- Custom styles for this template -->
     <link href="css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-select.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
