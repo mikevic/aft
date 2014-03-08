@@ -1,6 +1,6 @@
 <?php
 require 'dbconnect.inc.php';
-for ($i=1; $i<=14240; $i++) { 
+for ($i=1; $i<=14500; $i++) { 
 	$result = mysql_query("SELECT `Latest End Date`, `Earliest Start Date` FROM `ep` WHERE `entry_id`='$i'");
 	while($row = mysql_fetch_assoc($result)){
 		$timestamp = strtotime($row['Latest End Date']);

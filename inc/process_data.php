@@ -30,6 +30,10 @@ if($x_type != 'unset'){
       $or_code = generate_or_code($sub_issue, 'Sub Issues', 'search');
       $where_query .= " AND ($or_code)";
     }
+    if($skills != 'unset'){
+      $or_code = generate_or_code($skills, 'Skills', 'search');
+      $where_query .= " AND ($or_code)";
+    }
     if($duration != 'unset'){
       switch ($duration) {
         case '1':

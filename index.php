@@ -52,9 +52,9 @@
  
     </div> <!-- /container -->
     <button class="btn btn-large show btn-primary"><h2>Welcome to the Available Form Tracker!</h2></button>
-    <button class="btn btn-large show2 btn-success"><h4>Currently Indexing 14235 EPs and 16532 TNs</h4></button>
+    <button class="btn btn-large show2 btn-success"><h4>Currently Indexing 14407 EPs and 16241 TNs</h4></button>
     <a href="aft.php"><button class="btn btn-large show3 btn-warning"><h4>Take me to the AFT! >></h4></button></a>
-    <button class="btn btn-large show4"><h4>Last DB Sync : 30.01.2014</h4></button>
+    <button class="btn btn-large show4"><h4>Last DB Sync : 20.02.2014</h4></button>
     <?php
   require 'footer.php';
 ?>

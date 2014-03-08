@@ -68,6 +68,13 @@ if($x_type == 'Global Internship'){
 	$background = 'unset';
 }
 
+//Handling Skills
+if(isset($_POST['skills']) && !empty($_POST['skills'])){
+	$skills = $_POST['skills'];
+} else {
+	$skills = 'unset';
+}
+
 //Handling Country
 if(isset($_POST['country']) && !empty($_POST['country'])){
 	$country = strtoupper($_POST['country']);

@@ -12,6 +12,7 @@ if(isset($_POST['region']) && !empty($_POST['region'])){
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <?php
+      echo $query;
       switch ($current_page) {
     		case 'aft.php':
     			echo '<script src="js/aft.js"></script>';
@@ -35,7 +36,7 @@ if(isset($_POST['region']) && !empty($_POST['region'])){
       }
       echo generate_multi_select_js('duration');
       echo generate_multi_select_js('region');
-
+      echo generate_multi_select_js('skills');
     ?>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

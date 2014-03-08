@@ -106,6 +106,27 @@
     }
     ?>
     <div class="form-group">
+      <select name="skills[]" class="form-control aft-form selectpicker" id="skills" data-style="btn-inverse" data-live-search="true" multiple title="Select Skills">
+        <option value="unset">Select Skills</option>
+        <?php
+          $result4 = mysql_query("SELECT * from `skill`");
+          while ($row = mysql_fetch_assoc($result4)) {
+            echo '<optgroup label="'.$row['skill_name'].'">';
+            $parent_id = $row['skill_id'];
+            $result5 = mysql_query("SELECT * from `sub_skills` WHERE parent_id=$parent_id");
+            while ($sub_row = mysql_fetch_assoc($result5)) {
+              echo '<option value="'.$sub_row['skill_name'].'"';
+              if(is_selected($sub_row['skill_name'], $skills) == true){
+                echo 'selected="selected"';
+              }
+              echo '">'.$sub_row['skill_name'].'</option>';
+            }
+
+          }
+        ?>
+      </select>
+    </div>
+    <div class="form-group">
       <select name="duration" class="form-control aft-form selectpicker" id="duration" data-style="btn-inverse">
         <option value="unset">Select Duration</option>
         <option value="1" <?php if($duration == '1'){echo 'selected';} ?> >4-8 Weeks</option>
