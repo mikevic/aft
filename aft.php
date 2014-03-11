@@ -24,7 +24,7 @@
     if($x_type == 'Global Internship'){
     ?>
     <div class="form-group">
-      <select name="field-of-work[]" class="form-control aft-form selectpicker" id="fow" data-style="btn-warning" multiple>
+      <select name="field-of-work[]" class="form-control aft-form selectpicker" id="fow" data-style="btn-warning" multiple title="Select Primary Field of Work">
         <option value="unset">Select Field of Work</option>
       <?php
         $result3 = mysql_query("SELECT DISTINCT `fow` from `field_of_work`");
@@ -48,7 +48,7 @@
       </select>
     </div>
     <div class="form-group">
-      <select name="background[]" class="form-control aft-form selectpicker" data-style="btn-warning" multiple id="background" data-style="btn-warning">
+      <select name="background[]" class="form-control aft-form selectpicker" data-style="btn-warning" multiple id="background" data-style="btn-warning" title="Select Background">
         <option value="unset">Select Background</option>
         <?php
           $or_code = generate_form_or_code($fow, 'fow');
@@ -68,7 +68,7 @@
     } elseif ($x_type == 'Global Community Development'){
     ?>
     <div class="form-group">
-      <select name="master-issue[]" class="form-control aft-form selectpicker" multiple id="masterissue" data-style="btn-primary">
+      <select name="master-issue[]" class="form-control aft-form selectpicker" multiple id="masterissue" data-style="btn-primary" title="Pick Master Issue">
         <option value="unset">Select Master Issue</option>
         <?php
         $result3 = mysql_query("SELECT DISTINCT `master issue` from `issues`");
@@ -86,7 +86,7 @@
     if($master_issue != 'unset'){
     ?>
     <div class="form-group">
-      <select name="sub-issue[]" class="form-control aft-form" id="subissue" multiple data-style="btn-primary">
+      <select name="sub-issue[]" class="form-control aft-form" id="subissue" multiple data-style="btn-primary" title="Pick Sub Issues">
         <option value="unset">Select Sub Issue</option>
         <?php
         $or_code = generate_form_or_code($master_issue, 'master issue');
@@ -262,8 +262,10 @@
 </div><!-- /.modal -->
 
 
-
-  <button class="topten btn">View Top 20</button>
+<div class="topten">
+  <button id="topten" class="btn">View Top 20</button>
+  <button id="export" class="btn">Export</button>
+</div>
 
 <!-- AJAX Pre Loader -->
 <div id="loading">

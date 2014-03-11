@@ -12,7 +12,6 @@ if(isset($_POST['region']) && !empty($_POST['region'])){
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <?php
-      echo $query;
       switch ($current_page) {
     		case 'aft.php':
     			echo '<script src="js/aft.js"></script>';

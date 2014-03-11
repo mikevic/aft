@@ -2,7 +2,7 @@ $("select").change(function() {
 	//$("#aft-header-form").submit();
 });
 
-$(".topten").click(function() {
+$("#topten").click(function() {
     $("#loading").show();
     var url = "inc/generate_top_ten.php"; // the script where you handle the form input.
 
@@ -24,6 +24,29 @@ $(".topten").click(function() {
 
     return false; // avoid to execute the actual submit of the form.
 });
+
+$("#export").click(function() {
+    $(".modal-header").html('Export Data');
+    $(".modal-body").html('Please wait while your export request is processed by the server! Do not close this dialog box!');
+    $("#myModal").modal('show');
+    var url = "inc/csv-generator.php"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#aft-header-form").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+               $(".modal-body").html(data);
+           },
+           complete : function(){
+
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+
 
 
 

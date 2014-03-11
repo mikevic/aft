@@ -72,4 +72,19 @@ function generate_multi_select_js($tag){
 	return $js;
 }
 
+function echocsv($fields)
+{
+    $separator = '';
+    $csv = '';
+    foreach ($fields as $field) {
+        if (preg_match('/\\r|\\n|,|"/', $field)) {
+            $field = '"' . str_replace('"', '""', $field) . '"';
+        }
+        $csv .= $separator . $field;
+        $separator = ',';
+    }
+    $csv .= "\r\n";
+    return $csv;
+}
+
 ?>
